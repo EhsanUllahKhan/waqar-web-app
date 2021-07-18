@@ -13,11 +13,12 @@ class Item(Base):
 
     item_id = Column(Integer, primary_key=True, index=True)
     name = Column(String(length=20))
-    location = Column(string(length=500))
+    location = Column(String(length=500))
     lost_date = Column(Date)
     lost_by_user_id = Column(Integer, ForeignKey("users.user_id"))
     is_found=Column(Boolean)
     found_by_user_id = Column(Integer, ForeignKey("users.user_id"))
     found_date = Column(Date)
 
-    users = relationship("User", back_populates="items")
+    lost_by_user = relationship("User",foreign_keys="Item.lost_by_user_id",  back_populates="lost_by_user_items")
+    found_by_user = relationship("User", foreign_keys="Item.found_by_user_id", back_populates="found_by_user_items")

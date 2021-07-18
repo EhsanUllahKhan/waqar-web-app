@@ -1,5 +1,6 @@
 fastapi[all]
 python-dotenv
-pymysql
 sqlalchemy
 alembic
+mssql
+pyodbc

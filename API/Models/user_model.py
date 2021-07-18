@@ -12,4 +12,5 @@ class User(Base):
     email = Column(String(length=50), unique=True, index=True)
     password = Column(String(length=50))
 
-    items = relationship("Item", back_populates="users")
+    lost_by_user_items = relationship("Item", foreign_keys="[Item.lost_by_user_id]",back_populates="lost_by_user")
+    found_by_user_items = relationship("Item", foreign_keys="[Item.found_by_user_id]",back_populates="found_by_user")

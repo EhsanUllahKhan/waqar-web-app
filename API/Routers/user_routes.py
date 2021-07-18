@@ -35,5 +35,5 @@ def login_user(user: schemas.UserLogin, db: Session = Depends(get_db)):
 
 @router_user.get("/", response_model=List[schemas.User])
 def read_users(db: Session = Depends(get_db)):
-    users = crud.get_users(db, skip=skip, limit=limit)
+    users = crud.get_users(db)
     return users
